@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>P2P-Sync Client by p2p-sync</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="resources/css/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="resources/css/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="resources/css/github-light.css" media="screen">
+
+    <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+
+    <!-- Highlight JS -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+<section class="page-header-orig">
+    <h1 class="project-name">P2P-Sync</h1>
+    <h2 class="project-tagline">A simple library for distributed file synchronisation and sharing</h2>
+    <a href="https://github.com/p2p-sync/sync" class="btn">View on GitHub</a>
+    <a href="https://github.com/p2p-sync/sync/zipball/master" class="btn">Download .zip</a>
+    <a href="https://github.com/p2p-sync/sync/tarball/master" class="btn">Download .tar.gz</a>
+</section>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="installation.html">Installation</a></li>
+        <li><a href="documentation.html">Documentation</a></li>
+        <li><a href="console-client.html">Console Client</a></li>
+    </ul>
+</nav>
+
+<section class="main-content">
+    <h1>
+        <a id="p2p-sync" class="anchor" href="#p2p-sync" aria-hidden="true">
+            <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>
+        Documentation
+    </h1>
+
+    <p>
+        The main documentation of this library can be found in the project's <a href="https://github.com/p2p-sync/sync/wiki">wiki</a>.
+        However, a basic example is listed below, to get you started.
+    </p>
+
+    <pre>
+        <code class="java">
+            // specify the path to the synchronised folder
+            Path rootDir = Paths.get("path/to/synchronised/folder");
+            ITreeStorageAdapter storageAdapter = new LocalStorageAdapter(rootDir);
+
+            // initialise the synchronised folder:
+            // - create folder for ObjectStore (usually .sync)
+            // - create folders for shared files:
+            //    - sharedWithOthers (read-write)
+            //    - sharedWithOthers (read-only)
+            Sync.init(storageAdapter);
+
+            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+            KeyPair keyPair = keyGen.genKeyPair();
+
+            RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
+            RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+
+
+            ApplicationConfig appConfig = ApplicationConfigFactory.createBootstrapApplicationConfig(
+                "Piff Jenkins",
+                "ThisIsSafeUseIt",
+                "SaltAndPepperMakesTheMealBetter",
+                publicKey,
+                privateKey,
+                ApplicationConfigFactory.getDefaultIgnorePatterns()
+            );
+
+            // create a new Sync instance pointing to the root of the
+            // specified storage adapter, i.e. path/to/synchronised/folder
+            Sync sync = new Sync(storageAdapter);
+
+            // start the node as bootstrap peer (depending on the specified configuration),
+            // reconcile state of the synchronised folder with the ObjectStore,
+            // reconcile local state with other connected clients of the same user
+            NodeLocation nodeLocation = sync.connect(appConfig);
+
+
+            // share the file lying at relative/path/to/shared/file within
+            // the synchronised directory. The absolute path is also
+            // path/to/synchronised/folder/relative/path/to/shared/file
+            IShareEvent shareEvent = new ShareEvent(
+                Paths.get("relative/path/to/shared/file"),
+                AccessType.WRITE,
+                "Jason Response"
+            );
+
+            // get manager to share files and directories
+            ISharingSyncer sharingSyncer = sync.getSharingSyncer();
+            // contact all nodes of Piff Jenkins, allowing them to
+            // update their ObjectStore,
+            // then notify one peer of Jason Response
+            sharingSyncer.sync(shareEvent);
+
+
+            // unshare another file previously shared
+            IShareEvent unshareEvent = new UnshareEvent(
+                Paths.get("previously/shared/file"),
+                AccessType.READ,
+                "Jason Response"
+            );
+            // contact all nodes of Piff Jenkins,
+            // then notify one client of Jason Response
+            sharingSyncer.sync(unshareEvent);
+
+
+            INode node = sync.getNode();
+            // check whether an user is registered, login resp. logout users
+            IUserManager userManager = node.getUserManager();
+            // access some information stored in the distributed hash table
+            INodeManager nodeManager = node.getNodeManager();
+            // get file identifiers
+            IIdentifierManager<String, UUID> identifierManager = node.getIdentifierManager();
+
+
+            // get event aggregator to dynamically add/remove listeners, modifiers and aggregators
+            IEventAggregator eventAggregator = sync.getEventAggregator();
+
+
+            // get the Object Store of the synchronised folder
+            IObjectStore objectStore = sync.getObjectStore();
+            // manage PathObjects in the Object Store
+            IObjectManager objectManager = objectStore.getObjectManager();
+            // manage sharing properties of files and directories
+            objectStore.getSharerManager();
+            // manage existence of files and directories
+            objectStore.getDeleteManager();
+        </code>
+    </pre>
+
+    <footer class="site-footer">
+        <span class="site-footer-owner">
+            <a href="https://github.com/p2p-sync/client">P2P-Sync Client</a>
+            is maintained by <a href="https://github.com/p2p-sync">p2p-sync</a>.
+        </span>
+
+        <span class="site-footer-credits">
+            This site is using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a>
+            by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </span>
+    </footer>
+
+</section>
+
+</body>
+</html>

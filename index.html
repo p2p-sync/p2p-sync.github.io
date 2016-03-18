@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>P2P-Sync Client by p2p-sync</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="resources/css/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="resources/css/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="resources/css/github-light.css" media="screen">
+
+    <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+
+</head>
+<body>
+<section class="page-header-orig">
+    <h1 class="project-name">P2P-Sync</h1>
+    <h2 class="project-tagline">A simple library for distributed file synchronisation and sharing</h2>
+    <a href="https://github.com/p2p-sync/sync" class="btn">View on GitHub</a>
+    <a href="https://github.com/p2p-sync/sync/zipball/master" class="btn">Download .zip</a>
+    <a href="https://github.com/p2p-sync/sync/tarball/master" class="btn">Download .tar.gz</a>
+</section>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="installation.html">Installation</a></li>
+        <li><a href="documentation.html">Documentation</a></li>
+        <li><a href="console-client.html">Console Client</a></li>
+    </ul>
+</nav>
+
+<section class="main-content">
+    <h1>
+        P2P-Sync
+    </h1>
+
+    <p>
+        <img src="https://travis-ci.org/p2p-sync/sync.svg?branch=master">
+        <a href='https://coveralls.io/github/p2p-sync/sync?branch=master'><img
+                src='https://coveralls.io/repos/github/p2p-sync/sync/badge.svg?branch=master'
+                alt='Coverage Status'/></a>
+    </p>
+
+    <p>
+        P2P-Sync is a library for distributed file synchronising and sharing.
+        It is a refined version of <a href="https://github.com/Hive2Hive/Hive2Hive/">Hive2Hive</a>.
+        To build the P2P network, this library depends on <a href="https://github.com/tomp2p/TomP2P">TomP2P</a>.
+    </p>
+
+    <h2>Features</h2>
+    <ul>
+        <li>Synchronise a folder among all your nodes in the same network</li>
+        <li>Share particular files or folders with other users in the network</li>
+        <li>Profit from your own personal cloud: All file data is stored only on your peers</li>
+        <li>Messages sent between the nodes are encrypted using RSA resp. AES</li>
+        <li>A console based Java Client is built and waiting for you at P2P-Sync Client</li>
+    </ul>
+
+    <h2>Requirements</h2>
+    <ul>
+        <li>Java 8</li>
+        <li>Linux / Mac OS X</li>
+    </ul>
+
+    <h2>Architecture</h2>
+    <p>
+        This library is organised in multiple components, each having a dedicated
+        GitHub repository:
+
+    <ul>
+        <li><a href="https://github.com/p2p-sync/commons">Common Parts</a></li>
+        <li><a href="https://github.com/p2p-sync/persistence">Persistence Layer</a></li>
+        <li><a href="https://github.com/p2p-sync/versions">Versioning Layer</a></li>
+        <li><a href="https://github.com/p2p-sync/aggregator">Event Aggregation Layer</a></li>
+        <li><a href="https://github.com/p2p-sync/network">Network Layer</a></li>
+        <li><a href="https://github.com/p2p-sync/sync">Core</a></li>
+    </ul>
+
+    Additionally, a simple console client has been built, used as reference implementation.
+    <ul>
+        <li><a href="https://github.com/p2p-sync/client">Console Client</a></li>
+    </ul>
+    Its documentation can be found <a href="console-client.html">here</a>.
+    </p>
+
+    <footer class="site-footer">
+        <span class="site-footer-owner">
+            <a href="https://github.com/p2p-sync/client">P2P-Sync Client</a>
+            is maintained by <a href="https://github.com/p2p-sync">p2p-sync</a>.
+        </span>
+
+        <span class="site-footer-credits">
+            This site is using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a>
+            by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </span>
+    </footer>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>P2P-Sync Client by p2p-sync</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="resources/css/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="resources/css/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="resources/css/github-light.css" media="screen">
+
+    <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+
+    <!-- Highlight JS -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<section class="page-header-orig">
+    <h1 class="project-name">P2P-Sync</h1>
+    <h2 class="project-tagline">A simple library for distributed file synchronisation and sharing</h2>
+    <a href="https://github.com/p2p-sync/sync" class="btn">View on GitHub</a>
+    <a href="https://github.com/p2p-sync/sync/zipball/master" class="btn">Download .zip</a>
+    <a href="https://github.com/p2p-sync/sync/tarball/master" class="btn">Download .tar.gz</a>
+</section>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="installation.html">Installation</a></li>
+        <li><a href="documentation.html">Documentation</a></li>
+        <li><a href="console-client.html">Console Client</a></li>
+    </ul>
+</nav>
+
+<section class="main-content">
+    <h1>
+        <a id="p2p-sync-client" class="anchor" href="#p2p-sync-client" aria-hidden="true">
+            <span aria-hidden="true" class="octicon octicon-link"></span>
+        </a>
+        Installation
+    </h1>
+
+    <h2>Maven</h2>
+    <p>
+        Using maven, the library can be added as dependency of your project by
+        specifying the following in your pom.xml
+    </p>
+
+    <pre>
+        <code class="xml">
+            &lt;repositories&gt;
+                &lt;repository&gt;
+                    &lt;id&gt;sync-mvn-repo&lt;/id&gt;
+                    &lt;url&gt;https://raw.github.com/p2p-sync/sync/mvn-repo/&lt;/url&gt;
+                    &lt;snapshots&gt;
+                        &lt;enabled&gt;true&lt;/enabled&gt;
+                        &lt;updatePolicy&gt;always&lt;/updatePolicy&gt;
+                    &lt;/snapshots&gt;
+                &lt;/repository&gt;
+            &lt;/repositories&gt;
+
+            &lt;dependencies&gt;
+                &lt;dependency&gt;
+                    &lt;groupId&gt;org.rmatil.sync&lt;/groupId&gt;
+                    &lt;artifactId&gt;sync&lt;/artifactId&gt;
+                    &lt;version&gt;0.1-SNAPSHOT&lt;/version&gt;
+                &lt;/dependency&gt;
+            &lt;/dependencies&gt;
+        </code>
+    </pre>
+
+    <footer class="site-footer">
+        <span class="site-footer-owner">
+            <a href="https://github.com/p2p-sync/client">P2P-Sync Client</a>
+            is maintained by <a href="https://github.com/p2p-sync">p2p-sync</a>.
+        </span>
+
+        <span class="site-footer-credits">
+            This site is using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a>
+            by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </span>
+    </footer>
+
+</section>
+
+</body>
+</html>

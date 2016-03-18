@@ -1,0 +1,23 @@
+nav {
+    border-right: 1px solid #000000;
+    float: left;
+    padding: 0 10px 0 0;
+    margin: 50px;
+    text-align: right;
+}
+
+nav ul {
+    padding: 10px;
+    list-style-type: none;
+}
+
+nav ul li {
+    color: #159957;
+    text-decoration: none;
+}
+
+nav ul li a,
+nav ul li a:hover,
+nav ul li a:visited {
+    color: #159957;
+}
