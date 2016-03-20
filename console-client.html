@@ -2,9 +2,10 @@
 <html lang="en-us">
 <head>
     <meta charset="UTF-8">
-    <title>P2P-Sync Client by p2p-sync</title>
+    <title>Client | P2P-Sync</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="shortcut icon" type="image/png" href="resources/img/sync-logo.png">
     <link rel="stylesheet" type="text/css" href="resources/css/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="resources/css/stylesheet.css" media="screen">
@@ -58,8 +59,8 @@
     <h2>Deployment</h2>
     <p>
         To simplify the deployment process of the library, a Shell script (<code>deploy.sh</code>) is provided in
-        the distributed ZIP archive. You may want to adjust the listed IP addresses
-        to your needs.
+        the Git repository. Before invoking, make sure that the project has been assembled.
+        You may want to adjust the listed IP addresses to your needs.
         <br>
         <br>
         <b>Note:</b>The provided RSA public and private key pair in this repository
@@ -70,7 +71,7 @@
 
     <h2>Usage</h2>
     <p>
-        After downloading the clien, you will find a ZIP archive in the target directory.
+        After downloading the client, you will find a ZIP archive in the target directory.
         To run the client, cd into the bin directory. In there, a log file (sync.log) and
         an executable bash script is placed.
     </p>
@@ -87,7 +88,7 @@
     <p>
         To create the default application configuration for P2P-Sync, run the following command:
         <pre>./sync init -p &lt;pathToTheSynchronisedFolder&gt;</pre>
-        whereas <code>&lt;pathToTheSynchronsedFolder&gt;</code> should be
+        whereas <code>&lt;pathToTheSynchronisedFolder&gt;</code> should be
         replaced with an existing directory on your file system then used
         as synchronised folder. Besides creating the necessary directories for
         the shared folders, it will create the default configuration in your home
@@ -118,8 +119,8 @@
         In order to connect to a well-known node which has joined the network previously, type
         <pre>./sync connect -p &lt;pathToTheSynchronisedFolder&gt; --bootstrap-ip &lt;ipToNode&gt; --bootstrap-port &lt;portNrOfNode&gt;</pre>
         with <code>&lt;ipToNode&gt;</code> the ip address (IPv4 or IPv6) and <code>&lt;portNrOfNode&gt;</code> the
-        port of the node to connect. As previously, the amendment of <code>-a &lt;pathToConfigDir&gt;</code>
-        specifies the folder in which the application configuration resides.
+        port of the node to connect. The amendment of <code>-a &lt;pathToConfigFile&gt;</code>
+        specifies the file in which the application configuration resides.
     </p>
 
     <h3>Sharing and Unsharing</h3>
